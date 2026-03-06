@@ -13,21 +13,26 @@ public class Login {
 	@FindBy(xpath="//input[@name='password']") WebElement pwd;
 	@FindBy(xpath="//button[@class='btn btn-lg btn-primary pull-xs-right']") WebElement loginBtn;
 	@FindBy(xpath="//button[@class='nav-link active']") WebElement login10;
-	
+
+
+	// constructor for login
 	public Login(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		}
-	
+	// launch login page
 	public void launchLoginPage()
 	{
 		login.click();
 	}
+	//login through user name and passs
 	public void login(String username, String pass)
 	{
 		email.sendKeys(username);
 		pwd.sendKeys(pass);
 		loginBtn.click();
 	}
+
+	//verifing login 
 	public boolean verifyLoginSuccess()
 	{
 			return login10.isDisplayed();
