@@ -13,13 +13,14 @@ import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 
 public class Hooks {
-	
+
+	//setup the driver 
 	@BeforeAll
   public static void setupDriver() throws IOException {
 	  TestBase.initDriver();
 
   }
-  
+  // Attack screenshot
   @After
   public void attachScreen(Scenario scenario) {
 	  if(scenario.isFailed()) {
@@ -29,6 +30,7 @@ public class Hooks {
 		
 	  }  
 }
+	//close the browser
   @AfterAll
   public static void tearDown() {
     TestBase.tearDown();
