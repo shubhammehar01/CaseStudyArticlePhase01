@@ -23,7 +23,7 @@ public class TestArticleDef {
 	 AddUpdateArticle article1;
 	 DeleteArticle delete1;
 	
-	
+	//constructor
 	 public TestArticleDef()
 	 {
 			driver = TestBase.getdriver();
@@ -32,18 +32,22 @@ public class TestArticleDef {
 			delete1= new DeleteArticle(driver);
 	 }
 	
-	 
+	 //Open url for Login page 
 	@Given("User is on login Page")
 	public void LoginPage() throws IOException {
 		
 		TestBase.openUrl("https://conduit-realworld-example-app.fly.dev/");
 		login1.launchLoginPage();
-	}	
+	}
+
+	// user login details
 	@When("User enters {string} and {string}")
 	public void userLoginDetails(String name, String pwd) {
 		 login1.login(name, pwd);
 		 
 	}
+
+	//verify home page
 	@Then("User should be on Home page")
 	public void verifyHomePage() {
 		login1.verifyLoginSuccess();
@@ -55,6 +59,8 @@ public class TestArticleDef {
 	public void verifyArticlePage() {
 	    article1.launchArticle();
 	}
+
+	//create the article
 	@When("User Create Article {string} and {string} and {string} and {string}")
 	public void createArticle(String title, String desc, String body, String tag) {
 		  System.out.println (" Landed on to Article Creation Page!!! ");
@@ -62,7 +68,8 @@ public class TestArticleDef {
 		  article1.publishArticle();
 		  
 		  }
-	
+
+	//verifying the article created or not
 	@Then("Article must be Created")
 	public void verifyArticle() {
 		boolean success = article1.verifyHeader();
@@ -92,7 +99,7 @@ public class TestArticleDef {
 	   
 	    article1.publishArticle();}
 	}
-	
+	//verifying update of the article
 	@Then("Article Should be Updated")
 	public void verifyUpdatedArticle() {
 
@@ -103,7 +110,7 @@ public class TestArticleDef {
 		}
 	}
 
-	
+	// delete the article
 	@When("User Delete an Article")
 	public void DeleteArticle(DataTable dataTable) {
 		List<Map<String,String>> users= dataTable.asMaps();
@@ -112,7 +119,7 @@ public class TestArticleDef {
 			delete1.DeleteArtcile();}
 		  	}
 	
-	
+	// verifying article deleted or not
 	@Then("Article Should be Deleted")
 	public void verifyDeletedArticle() {
 		
