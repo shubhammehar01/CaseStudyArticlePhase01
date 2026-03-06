@@ -21,22 +21,22 @@ public class DeleteArticle {
 	@FindBy(xpath="(//button[contains(.,'Delete Article')])[1]") WebElement deleteBtn;
 	@FindBy(xpath="//div[@class='article-preview']") List<WebElement> deleteSucc;
 	
-	
+	//contructor for deleting the article
 	public DeleteArticle(WebDriver driver) {
 		this.driver=driver;
 		this.wait= new WebDriverWait(driver, Duration.ofSeconds(3));
 		PageFactory.initElements(driver, this);
 	}
-	
+	//method for deleting the article
 	public void DeleteArtcile() {
 		deleteBtn.click();
          Alert confirmationAlert = wait.until(ExpectedConditions.alertIsPresent());
          String actualAlertText = confirmationAlert.getText();
         String expectedAlertText = "Want to delete the article?";
         if (actualAlertText.equals(expectedAlertText)) {
-            System.out.println("Alert message verified: " + actualAlertText);
+            System.out.println("Alert verified: " + actualAlertText);
         } else {
-            System.out.println("Alert message mismatch!");
+            System.out.println("Alert mismatch!");
         }
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -45,7 +45,7 @@ public class DeleteArticle {
       
     }
         
-
+    //verify article delete or not 
 	public boolean isDeleted() {
 	    List<WebElement> elements = deleteSucc;
 	    if (elements.isEmpty()) {
