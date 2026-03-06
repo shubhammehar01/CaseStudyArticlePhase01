@@ -1,4 +1,4 @@
-Feature: Article Craete Update and Delete
+Feature: CRUD Article for CaseStudy
 
 
 Scenario: User Login
@@ -14,21 +14,21 @@ Then Article must be Created
 
 Examples:
 | title | desc | body | tag |
-| ABC | DESC | BODY | TAG |
-| XYZ | DESC | BODY | TAG |
-| POQ | DESC | BODY | TAG |
+| def | defdesc | defBODY | defTAG |
+| ghi | ghiDESC | ghiBODY | ghiTAG |
+| mno | mnoDESC | mnoBODY | mnoTAG |
 
 
 Scenario: Update an Article
 Given Article must be Created
 When User Update an Article
 | oldtitle | newtitle | desc | body | tag |
-| POQ | SDF2 | DESC | BODY | TAG |
+| def | qrs | qrsDESC | qrsBODY | qrsTAG |
 Then Article Should be Updated
 
 Scenario: Delete an Article
 Given Article Should be Updated
 When User Delete an Article
 | title |
-| SDF2 |
+| qrs |
 Then Article Should be Deleted
