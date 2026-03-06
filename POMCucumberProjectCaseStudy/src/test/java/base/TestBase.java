@@ -10,7 +10,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class TestBase {
 	private static TestBase testBase;
 	private static WebDriver driver;
-	
+	//constructor
 	private TestBase() {
 		String strBrowser = "chrome";
 		ChromeOptions options = new ChromeOptions();
@@ -37,10 +37,11 @@ public class TestBase {
 	public static WebDriver getdriver() {
 	return driver;
 }
+	//Open Url Method
 	public static void openUrl(String url) {
 		driver.get(url);
 	}
-	
+		// close the browser after operations
 		public static void tearDown() {
 			if (driver!=null) {
 				driver.close();
