@@ -16,58 +16,62 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AddUpdateArticle {
 	
 	@FindBy (xpath="//a[contains(.,'New Article')]") WebElement newArt;
-	@FindBy(xpath="//input[@name='title']") WebElement titleEle;
-	@FindBy(xpath ="//input[@name='description']") WebElement descEle;
-	@FindBy(xpath="//textarea[@name='body']") WebElement bodyEle;
-	@FindBy(xpath="//input[@name='tags']") WebElement tagEle;
-	@FindBy(xpath="//button[@type='submit']") WebElement publish;
-	@FindBy(xpath="//span[@class='error-messages']") List<WebElement> errormsg;
+	@FindBy(xpath="//input[@name='title']") WebElement titleElement;
+	@FindBy(xpath ="//input[@name='description']") WebElement descElement;
+	@FindBy(xpath="//textarea[@name='body']") WebElement bodyElement;
+	@FindBy(xpath="//input[@name='tags']") WebElement tagElement;
+	@FindBy(xpath="//button[@type='submit']") Webment publish;
+	@FindBy(xpath="//span[@class='error-messages']") List<Webment> errormsg;
 	
 	@FindBy(xpath="//h1") WebElement header;
 	
 	@FindBy(xpath="//a[contains(.,'Edit Article')]") WebElement editArticle;
 	@FindBy(xpath="//button[contains(.,'Update Article')]") WebElement updatetArticle;
-	
+
+	// Constructor 
 	public AddUpdateArticle(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		}
-	
+	//launch the article
 	public void launchArticle()
 	{
 		newArt.click();
 	}
-	
+
+	//verify article publish or not
 	public boolean isArticlePageDisp() {	
 		return newArt.isDisplayed();
 	}
 	
-	
+	//adding articles details
 	public void enterArticleDetails(String title, String desc,String body, String tag) {
-		titleEle.clear();
-		titleEle.sendKeys(title);
-		descEle.clear();
-		descEle.sendKeys(desc);
-		bodyEle.clear();
-		bodyEle.sendKeys(body);
-		tagEle.clear();
+		titleElement.clear();
+		titleElement.sendKeys(title);
+		descElement.clear();
+		descElement.sendKeys(desc);
+		bodyElement.clear();
+		bodyElement.sendKeys(body);
+		tagElement.clear();
 		tagEle.sendKeys(tag);
 			}
-	
-	public void updateArticleDetails(String title1, String desc1,String body1, String tag1) {
-		titleEle.clear();
-		titleEle.sendKeys(title1);
-		descEle.clear();
-		descEle.sendKeys(desc1);
-		bodyEle.clear();
-		bodyEle.sendKeys(body1);
-		tagEle.clear();
-		tagEle.sendKeys(tag1);
+	//Update Article Details
+	public void updateArticleDetails(String title, String desc,String body, String tag) {
+		titleElement.clear();
+		titleElement.sendKeys(title);
+		descElement.clear();
+		descElement.sendKeys(desc);
+		bodyElement.clear();
+		bodyElement.sendKeys(body);
+		tagElement.clear();
+		tagElement.sendKeys(tag);
 			}
-	
+	//public article
 	public void publishArticle() {
 		publish.submit();
 		
 	}
+
+		//verify header
 		public boolean verifyHeader() {
 			try {
 		        return header.isDisplayed();
@@ -75,7 +79,7 @@ public class AddUpdateArticle {
 		        return false;
 		    }
 		}
-	
+	// Check err if
 	public boolean checkErr() 
 	{
 
@@ -90,11 +94,11 @@ public class AddUpdateArticle {
 		
 		}
 
-	
+	//edit article method
 	public void editArticle() {
 		editArticle.click();
 			}
-	
+	//update article method
 	public void updatetArticle() {
 		updatetArticle.click();
 	}
